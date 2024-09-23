@@ -1,8 +1,8 @@
-# Reactive Bridge
+# Bridging funds using Reactive Network technology 
 
 ## Overview
 
-The Reactive Bridge App allows users to bridge funds from a origin chain to destination chain. It is a system that operates between origin chain (or any other layer), the Reactive Network and destination chain (or any other layer). These requests are being handled by a corresponding contract on the Reactive Network. User deposits funds to the bridge origin contract, which then emits a request to the reactive contract. The reactive contract processes the request by emitting callback to destination contract, which is sending funds to the corresponding destination contract and chain.
+The Reactive Bridge App allows users to bridge funds from a origin chain to destination chain. This is acomplished using [Reactive Network technology](https://reactive.network). It is a system that operates between origin chain (or any other layer), the Reactive Network and destination chain (or any other layer). These requests are being handled by a corresponding contract on the Reactive Network. User deposits funds to the bridge origin contract, which then emits a request to the reactive contract. The reactive contract processes the request by emitting callback to destination contract, which is sending funds to the corresponding destination contract and chain.
 
 ## Contracts
 
