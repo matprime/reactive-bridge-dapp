@@ -99,4 +99,3 @@ https://sepolia.etherscan.io/tx/0x95abfa251f123516721f1c7f88bee9e3871565d06e0140
 https://kopli.reactscan.net/rvm/0xb8c37c1600c465620774ff6fcf950e3de1774bfd/40
 4. Destination contract receives the callback and sends 0.01 ether to the wallet of original user on destination chain.
 https://sepolia.etherscan.io/tx/0x910399e49398c18ba72de50301150dffd06d4508353a9c3d8579a553e7d7c96f
-
