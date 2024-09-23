@@ -1,8 +1,8 @@
-# Reactive Bridge
+# Bridging funds using Reactive Network technology 
 
 ## Overview
 
-The Reactive Bridge App allows users to bridge funds from a origin chain to destination chain. It is a system that operates between origin chain (or any other layer), the Reactive Network and destination chain (or any other layer). These requests are being handled by a corresponding contract on the Reactive Network. User deposits funds to the bridge origin contract, which then emits a request to the reactive contract. The reactive contract processes the request by emitting callback to destination contract, which is sending funds to the corresponding destination contract and chain.
+The Reactive Bridge App allows users to bridge funds from a origin chain to destination chain. This is acomplished using [Reactive Network technology](https://reactive.network). It is a system that operates between origin chain (or any other layer), the Reactive Network and destination chain (or any other layer). These requests are being handled by a corresponding contract on the Reactive Network. User deposits funds to the bridge origin contract, which then emits a request to the reactive contract. The reactive contract processes the request by emitting callback to destination contract, which is sending funds to the corresponding destination contract and chain.
 
 ## Frontend
 This is the demo version of the bridge application, showcasing how to trigger value bridging between two chains. The frontend is configured to work with already deployed contracts, which are available for users to interact with. User can open the frontend/index.html in browser to interact with the contracts.
@@ -99,5 +99,4 @@ https://sepolia.etherscan.io/tx/0x95abfa251f123516721f1c7f88bee9e3871565d06e0140
 https://kopli.reactscan.net/rvm/0xb8c37c1600c465620774ff6fcf950e3de1774bfd/40
 4. Destination contract receives the callback and sends 0.01 ether to the wallet of original user on destination chain.
 https://sepolia.etherscan.io/tx/0x910399e49398c18ba72de50301150dffd06d4508353a9c3d8579a553e7d7c96f
-
 
