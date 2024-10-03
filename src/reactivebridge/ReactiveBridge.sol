@@ -54,15 +54,15 @@ contract ReactiveBridge is IReactive, AbstractReactive {
         uint256 chain_id,
         address _contract,
         uint256 topic_0,
-        uint256 topic_1,
+        uint256 initiator,
         uint256 topic_2,
-        uint256 topic_3,
+        uint256 bridged_value,
         bytes calldata data,
         uint256 /* block_number */,
         uint256 /* op_code */
     ) external vmOnly {
-        emit Event(chain_id, _contract, topic_0, topic_1, topic_2, topic_3, data, ++counter);
-        bytes memory payload = abi.encodeWithSignature("callback(address,uint256)", address(0), topic_3);
+        emit Event(chain_id, _contract, topic_0, initiator, topic_2, bridged_value, data, ++counter);
+        bytes memory payload = abi.encodeWithSignature("callback(address,address,uint256)", address(0), initiator, bridged_value);
         emit Callback(chain_id, _callback, GAS_LIMIT, payload);
     }
 

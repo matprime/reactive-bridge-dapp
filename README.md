@@ -46,9 +46,9 @@ This script guides you through deploying and testing the Reactive Bridge app dem
 If origin chain and destination chains are Sepolia you can use the recommended Sepolia RPC URL: `https://rpc2.sepolia.org`. Youn can find more about React system contract  0x0000000000000000000000000000000000FFFFFF [here](https://dev.reactive.network/system-contract). 
 
 Frontend is configured to work with already deployed contracts on Sepolia and Kopli testnet:
-BRIDGE_ORIGIN_ADDR=0xd9194b9A5eFb767411b15a49d79bda9aFe63eFE2
-BRIDGE_DESTINATION_ADDR=0xe7Cc1f1Ec6CD96333f8cB6A40c4033081E114bB8
-BRIDGE_REACTIVE_ADDR=0xE1328A2063319a4Cdb2F7177884EA05f1dBeCe8F
+BRIDGE_ORIGIN_ADDR=0x65DA6c43A59551f87cE6D46a90062c5e66E6aAf0
+BRIDGE_DESTINATION_ADDR=0xEb77CAd405c62d7e9A2B4F1cDa35Cf3C4c1300a9
+BRIDGE_REACTIVE_ADDR=0x68E33049B621D9F3482f522f9Ff446Fa2e72592f
 
 ### Step 1
 Deploy the `BridgeOrigin` to origin chain and assign the `Deployed to` address from the response to `BRIDGE_ORIGIN_ADDR`. 
@@ -92,10 +92,10 @@ cast send $BRIDGE_DESTINATION_ADDR --rpc-url $DESTINATION_RPC --private-key $DES
 ## Bridging worfklow example
 
 1. User sends 0.01 ether to the bridge origin contract on origin chain.
-https://sepolia.etherscan.io/tx/0x95abfa251f123516721f1c7f88bee9e3871565d06e01401a29633f351106bc52
-2. Bridge origin contract emits `BridgeDepositRequested` event, which will be catched on the Reactive Network.
-https://sepolia.etherscan.io/tx/0x95abfa251f123516721f1c7f88bee9e3871565d06e01401a29633f351106bc52#eventlog
+https://sepolia.etherscan.io/tx/0x3d094637601ce7eed7dd6efad525471696a8cb8bfd59d0dc1f63528bb704496e
+2. Bridge origin contract emits `BridgeRequest` event, which will be catched on the Reactive Network.
+https://sepolia.etherscan.io/tx/0x3d094637601ce7eed7dd6efad525471696a8cb8bfd59d0dc1f63528bb704496e#eventlog
 3. Reactive contract catches the event and sends callback to the destination contract on destination chain.
-https://kopli.reactscan.net/rvm/0xb8c37c1600c465620774ff6fcf950e3de1774bfd/40
-4. Destination contract receives the callback and sends 0.01 ether to the wallet of original user on destination chain.
-https://sepolia.etherscan.io/tx/0x910399e49398c18ba72de50301150dffd06d4508353a9c3d8579a553e7d7c96f
+https://kopli.reactscan.net/rvm/0xb8c37c1600c465620774ff6fcf950e3de1774bfd/25
+4. Destination contract receives the callback and sends 0.01 ether to the wallet of user on destination chain.
+https://sepolia.etherscan.io/tx/0xe2ac1a30ce7183229368ec2281eff3aaaf2ffb46bb1aabdf6cf645dd8d195df2

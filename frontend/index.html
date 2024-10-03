@@ -143,7 +143,8 @@
         </div>
     </div>
     <script>
-        const contractAddress = '0xd9194b9A5eFb767411b15a49d79bda9aFe63eFE2';
+        const originContractAddress = '0x65DA6c43A59551f87cE6D46a90062c5e66E6aAf0';
+        const bridgeOwnerAddress = '0xB8c37C1600C465620774ff6FcF950E3de1774BFd';
 
         async function loadWeb3() {
             if (typeof window.ethereum !== 'undefined') {
@@ -161,13 +162,13 @@
             }
         }
 
-        // Fetcing the latest block number from the reactive network
-        async function getLatestBlockNumber(depositorAddress) {        
+        // the latest block number for specific reactive network vm
+        async function getLatestBlockNumber(bridgeOwnerAddress) {        
             const requestData = {
                 "jsonrpc": "2.0",
                 "method": "rnk_getHeadNumber",
                 "params": [
-                    depositorAddress
+                    bridgeOwnerAddress
                 ],
                 "id": 1
             };
@@ -193,12 +194,12 @@
             const amount = document.getElementById('amount').value;
             const accounts = await web3.eth.getAccounts();
             const depositorAddress = accounts[0];
-            const latestBlockNumber = await getLatestBlockNumber(depositorAddress);
+            const latestBlockNumber = await getLatestBlockNumber(bridgeOwnerAddress);
             console.log("latestBlockNumber", latestBlockNumber);
 
             web3.eth.sendTransaction({
                 from: depositorAddress,
-                to: contractAddress,
+                to: originContractAddress,
                 value: web3.utils.toWei(amount, 'ether')
             })
             .on('transactionHash', function(hash) {
@@ -207,7 +208,7 @@
                 transactionHashLink.innerText = hash;
                 transactionHashLink.href = `https://sepolia.etherscan.io/tx/${hash}`;
                 document.getElementById('transactionDetails').style.display = 'block';
-                getReactiveTransactionHash(depositorAddress, latestBlockNumber);
+                getReactiveTransactionHash(bridgeOwnerAddress, latestBlockNumber);
             })
             .on('error', function(error) {
                 console.error('Transaction failed', error);
@@ -215,10 +216,10 @@
             });
         }
 
-        function getReactiveTransactionHash(depositorAddress, latestBlockNumber) {      
+        function getReactiveTransactionHash(bridgeOwnerAddress, latestBlockNumber) {      
             //waiting for the latest transaction to be confirmed
             const interval = setInterval(async () => {
-                const blockNumber = await getLatestBlockNumber(depositorAddress);
+                const blockNumber = await getLatestBlockNumber(bridgeOwnerAddress);
                 console.log("blockNumber", blockNumber);
                 console.log("latestBlockNumber", latestBlockNumber);
                 if (latestBlockNumber < blockNumber) {
